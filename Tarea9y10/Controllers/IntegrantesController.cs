@@ -15,10 +15,23 @@ namespace Tarea9y10.Controllers
         {
             return View();
         }
-
+        [HttpGet]
+        [Route("create")]
         public IActionResult Create()
         {
-            return View();
+
+            return View("Create", new Integrantes());
+
+        }
+        [HttpPost]
+        [Route("create")]
+        public IActionResult Create(Integrantes integrantes)
+        {
+
+                bd.Integrantes.Add(integrantes);
+                bd.SaveChanges();
+                return RedirectToAction("Index");
+           
         }
     }
 }
