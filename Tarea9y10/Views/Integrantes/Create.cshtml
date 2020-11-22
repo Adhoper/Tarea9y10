@@ -1,53 +1,57 @@
-﻿@model Tarea9y10.Models.Integrantes
+﻿@model Tarea9y10.Models.ViewModel
 
 
 
 @{
     ViewData["Title"] = "Create";
+
 }
+
+
+
 
     <form method="post" asp-controller="Integrantes" asp-action="create">
 
-
         <div class="form-horizontal">
-            <h4>Integrantes</h4>
+            <h2>Datos Personales</h2>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <div class="form-group">
-                @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="Nombres" />
+                    <input type="text" asp-for="integrantes.Nombres" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="Apellidos" />
+                    <input type="text" asp-for="integrantes.Apellidos" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="radio" asp-for="Sexo" id="hombre" name="sexo" value="Hombre">
+                    <input type="radio" asp-for="integrantes.Sexo" value="Hombre">
                     <label for="hombre">Hombre</label><br>
-                    <input type="radio" asp-for="Sexo" id="mujer" name="sexo" value="Mujer">
+                    <input type="radio" asp-for="integrantes.Sexo" value="Mujer">
                     <label for="mujer">Mujer</label><br>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="date" asp-for="FechaNacimiento" />
+                    <input type="date" asp-for="integrantes.FechaNacimiento" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PaisNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.PaisNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10 dropdown">
-                    <select name="Paises" id="paises" asp-for="PaisNacimiento">
+                    <select name="Paisess" id="paisess" asp-for="integrantes.PaisNacimiento">
                         <option value="C">C</option>
                         <option value="D">D</option>
                         <option value="M">M</option>
@@ -57,17 +61,17 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.CiudadNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.CiudadNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="CiudadNacimiento" />
+                    <input type="text" asp-for="integrantes.CiudadNacimiento" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.PaisResidenciaAct, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.PaisResidenciaAct, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10 dropdown">
-                    <select name="Paises" id="paises" asp-for="PaisNacimiento">
-                        <option value="C">C</option>
+                    <select asp-for="integrantes.PaisResidenciaAct">
+                        <option selected value="C">C</option>
                         <option value="D">D</option>
                         <option value="M">M</option>
                         <option value="S">S</option>
@@ -76,42 +80,231 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.CiudadResidenciaAct, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.CiudadResidenciaAct, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="CiudadResidenciaAct" />
+                    <input type="text" asp-for="integrantes.CiudadResidenciaAct" />
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-md-3">
+                        <div class="form-group two-fields">
+                            <label for="">Direccion</label>
+                            <div class="input-group">
+                                <input type="text" asp-for="direccion.Provincia" required class="form-control" placeholder="Provincia">
+                                <input type="text" asp-for="direccion.Sector" required class="form-control" placeholder="Sector">
+                                <input type="text" asp-for="direccion.Calle" required class="form-control" placeholder="Calle">
+                                <input type="text" asp-for="direccion.NumVivienda" required class="form-control" placeholder="Num. Vivienda">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="Telefono" />
+                    <input type="text" asp-for="integrantes.Telefono" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="Celular" />
+                    <input type="text" asp-for="integrantes.Celular" />
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.integrantes.Email, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="text" asp-for="Email" />
+                    <input type="text" asp-for="integrantes.Email" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Siguiente" class="btn btn-primary" />
+                @Html.LabelFor(model => model.documentoIdentificacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="radio" name="identificacion" value="Cedula">
+                    <label>Cedula</label><br>
+                    <input type="radio" name="identificacion" value="Pasaporte">
+                    <label>Pasaporte</label><br>
+                    <input type="radio" name="identificacion" value="RNC">
+                    <label>RNC</label><br>
+
+                    <input type="file" />
                 </div>
+            </div>
+
+            
+        </div><br />
+
+        <h2>Datos Eclesiasticos</h2>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.eclesiasticos.FechaConversion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" asp-for="eclesiasticos.FechaConversion" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.eclesiasticos.FechaBautismo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" asp-for="eclesiasticos.FechaBautismo" />
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.eclesiasticos.FechaAceptadoIglesia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" asp-for="eclesiasticos.FechaAceptadoIglesia" />
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.eclesiasticos.DenominacionPerteneciente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Bautista">
+                <label for="hombre">Bautista</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Pentecostal">
+                <label for="mujer">Pentecostal</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Metodista">
+                <label for="mujer">Metodista</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Catolica">
+                <label for="mujer">Catolica</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Presbiteriana">
+                <label for="mujer">Presbiteriana</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Adventista">
+                <label for="mujer">Adventista</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Templo	Bíblico">
+                <label for="mujer">Templo Bíblico</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Menonita">
+                <label for="mujer">Menonita</label><br>
+                <input type="radio" asp-for="eclesiasticos.DenominacionPerteneciente" value="Luterana">
+                <label for="mujer">Luterana</label><br>
+
+                <label>Otro</label>
+                <input type="text" asp-for="eclesiasticos.DenominacionPerteneciente">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nombre de la iglesia a la que asiste actualmente</label>
+            <div class="col-md-10">
+                <input type="text" asp-for="eclesiasticos.NombreIglesiaActual" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Si asiste a esta iglesia	por un tiempo menor	a un año, ¿dónde se congregaba antes?</label>
+            <div class="col-md-10">
+                <input type="text" asp-for="eclesiasticos.IglesiaAnterior" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nombre del pastor de su iglesia actual</label>
+            <div class="col-md-10">
+                <input type="text" asp-for="eclesiasticos.NombrePastorActual" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Ha sido Disciplinado alguna vez?</label>
+            <div class="col-md-10">
+                <input type="radio" value="Si">
+                <label for="hombre">Si</label><br>
+                <input type="radio" value="No">
+                <label for="mujer">No</label><br><br />
+
+                <label>Si elijio "Si" diga cuantas veces</label><br />
+                <input type="number" asp-for="eclesiasticos.Disciplinatura" /><br /><br />
+                <label>Causa/s</label><br />
+                <textarea style="overflow:auto;resize:none" asp-for="eclesiasticos.CausaDisciplina" rows="5" cols="25"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>En la actualidad ocupa usted alguna de estasfunciones:</label>
+            <div class="col-md-10">
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Pastor">
+                <label>Pastor</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Anciano">
+                <label>Anciano</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Diacono">
+                <label>Diacono</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Misionero">
+                <label>Misionero</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider Escuela Dominical">
+                <label>Lider Escuela Dominical</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider Minist. de Jóvenes">
+                <label>Lider Minist. de Jóvenes</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider Minist. de Caballeros">
+                <label>Lider Minist. de Caballeros</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider Minist. de Damas">
+                <label>Lider Minist. de Damas</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider Minist. de Níños">
+                <label>Lider Minist. de Níños</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider	Minist.	de Matrimonios">
+                <label>Lider Minist. de Matrimonios</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Lider	de grupo pequeño (Célula)">
+                <label>Lider de grupo pequeño (Célula)</label><br>
+                <input type="radio" asp-for="eclesiasticos.FuncionesOcupa" value="Ninguno">
+                <label>Ninguno</label><br>
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>¿Cuáles	son	los	ministerios	en	los	que	ha	servido</label>
+            <div class="col-md-10">
+                <textarea style="overflow:auto;resize:none" asp-for="eclesiasticos.MinisterioServidos" rows="5" cols="25"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>¿En	cuál de	estos ministerios considera	que	tuvo mayor fruto? ¿Por qué?</label>
+            <div class="col-md-10">
+                <textarea style="overflow:auto;resize:none" asp-for="eclesiasticos.MinisteriosFrutosPQ" rows="5" cols="25"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Considerando	sus	dones y	talentos, ¿a qué ministerio	cree usted	que	Dios lo(a) está	 llamando?</label>
+            <div class="col-md-10">
+                <textarea style="overflow:auto;resize:none" asp-for="eclesiasticos.DiosLlamado" rows="5" cols="25"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>¿Qué	metas	tiene	para	su	vida?</label>
+            <div class="col-md-10">
+                <textarea style="overflow:auto;resize:none" asp-for="eclesiasticos.MetasVida" rows="5" cols="25"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>¿Cuenta	con	el respaldo	de sus autoridades eclesiásticas para realizar estos estudios?</label>
+            <div class="col-md-10">
+                <input type="radio" asp-for="eclesiasticos.RespaldoEstudios" value="Si">
+                <label >Si</label><br>
+                <input type="radio" asp-for="eclesiasticos.RespaldoEstudios" value="No">
+                <label>No</label><br><br />
+            </div>
+        </div>
+
+        <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </div>
     </form>
+
+
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
