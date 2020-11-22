@@ -30,6 +30,9 @@ namespace Tarea9y10.Models
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Sexo { get; set; }
+        [Display(Name = "Fecha de Nacimiento")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; }
         public string PaisNacimiento { get; set; }
         public string Foto { get; set; }

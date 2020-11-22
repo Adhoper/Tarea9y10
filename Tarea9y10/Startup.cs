@@ -50,7 +50,7 @@ namespace Tarea9y10
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Integrantes}/{action=Index}/{id?}");
             });
         }
     }
