@@ -42,6 +42,9 @@ namespace Tarea9y10.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("CantVecesDisciplina")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("CausaDisciplina")
                         .HasColumnType("TEXT");
 

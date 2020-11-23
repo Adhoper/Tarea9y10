@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Tarea9y10.ImageModel;
 using Tarea9y10.Models;
+using System.Net;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Tarea9y10.Controllers
 {
@@ -11,23 +18,37 @@ namespace Tarea9y10.Controllers
     {
 
         AplicacionDbContext bd = new AplicacionDbContext();
+
+        private readonly IWebHostEnvironment webHostEnviroment;
+
+        public IntegrantesController(IWebHostEnvironment webHostEnvironments)
+        {
+            webHostEnviroment = webHostEnvironments;
+        }
         public IActionResult Index()
         {
-            return View();
+            
+            return View(bd);
         }
 
         [HttpGet]
         [Route("create")]
         public IActionResult Create()
         {
+            ModelPaises MP = new ModelPaises();
+            
+            //Trae todos los paises
+            ViewBag.Paises = MP.ListaPaises();
 
             return View("Create", new ViewModel());
 
         }
         [HttpPost]
         [Route("create")]
-        public IActionResult Create(Integrantes integrantes,Direccion direccion,DocumentoIdentificacion documento,DatosFamiliares familiares,DatosAcademicos academicos,DatosEclesiasticos eclesiasticos,DatosLaborales laborales)
+        public IActionResult Create(Integrantes integrantes,Direccion direccion,DocumentoIdentificacion documento,DatosFamiliares familiares,DatosAcademicos academicos,DatosEclesiasticos eclesiasticos,DatosLaborales laborales,ImagesModel imgModel)
         {
+
+
             string DocIdent = Request.Form["identificacion"];
 
             if (DocIdent == "Cedula")
@@ -81,6 +102,15 @@ namespace Tarea9y10.Controllers
                 integrantes.DatosLaboralesId = lab.DatosLaboralesId;
             }
 
+            string stringFileName = UploadFile(imgModel);
+            var integrante = new Integrantes
+            {
+                 Foto = stringFileName
+            };
+
+            integrantes.Foto = stringFileName;
+            
+
             bd.Integrantes.Add(integrantes);
             bd.SaveChanges();
 
@@ -88,5 +118,27 @@ namespace Tarea9y10.Controllers
            
         }
 
+
+        private string UploadFile(ImagesModel imgModel)
+        {
+            string fileName = null;
+            if (imgModel.Foto!=null)
+            {
+                string uploadDir = Path.Combine(webHostEnviroment.WebRootPath,"Imagenes2x2");
+                fileName = Guid.NewGuid().ToString() + "-" + imgModel.Foto.FileName;
+                string FilePath = Path.Combine(uploadDir,fileName);
+
+                using (var fileStream = new FileStream(FilePath,FileMode.Create))
+                {
+                    imgModel.Foto.CopyTo(fileStream);
+                }
+
+                
+            }
+            return fileName;
+        }
+       
+
+        
     }
 }

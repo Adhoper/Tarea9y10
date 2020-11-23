@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace Tarea9y10.Models
 {
@@ -34,10 +35,14 @@ namespace Tarea9y10.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; }
+        [Display(Name = "Pais de Nacimiento")]
         public string PaisNacimiento { get; set; }
         public string Foto { get; set; }
+        [Display(Name = "Ciudad de Nacimiento")]
         public string CiudadNacimiento { get; set; }
+        [Display(Name = "Pais de Residencia Actual")]
         public string PaisResidenciaAct { get; set; }
+        [Display(Name = "Ciudad de Residencia Actual")]
         public string CiudadResidenciaAct { get; set; }
         public int DireccionId { get; set; }
         public string Telefono { get; set; }
@@ -59,6 +64,7 @@ namespace Tarea9y10.Models
         public string Provincia { get; set; }
         public string Sector { get; set; }
         public string Calle { get; set; }
+        [Display(Name = "Num. de Vivienda")]
         public string NumVivienda { get; set; }
     }
 
@@ -96,10 +102,14 @@ namespace Tarea9y10.Models
         [Key]
         public int DatosEclesiasticosId { get; set; }
 
+        [Display(Name = "Fecha de Conversion")]
         public DateTime FechaConversion { get; set; }
+        [Display(Name = "Fecha de Bautismo")]
         public DateTime FechaBautismo { get; set; }
+        [Display(Name = "Fecha en la que fue aceptado en la Iglesia")]
         public DateTime FechaAceptadoIglesia { get; set; }
 
+        [Display(Name = "Denominacion a la que Pertenece")]
         public string DenominacionPerteneciente { get; set; }
 
         public string NombreIglesiaActual { get; set; }
@@ -109,6 +119,7 @@ namespace Tarea9y10.Models
         public string NombrePastorActual { get; set; }
 
         public string Disciplinatura { get; set; }
+        public string CantVecesDisciplina { get; set; }
 
         public string CausaDisciplina { get; set; }
 
