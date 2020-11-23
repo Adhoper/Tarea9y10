@@ -157,13 +157,83 @@
 
         <h2>Datos Familiares</h2>
         <hr />
+        <div class="form-group">
+            <label>Estado civil:</label>
+            <div class="col-md-10">
+                <input type="radio" asp-for="familiares.EstadoCivil" value="Soltero">
+                <label>Soltero</label>
+                <input type="radio" asp-for="familiares.EstadoCivil" value="Cazado">
+                <label>Cazado</label><br />
+                <label>En Caso de que sea Cazado Nombre Esposa(o)</label><br />
+                <input type="text" class="form-control" asp-for="familiares.NombrePareja" />
+            </div>
+            <div class="form-group">
+                <label>Hijos: </label>
+                <div class="col-md-10">
+                    <input type="radio" asp-for="familiares.CantidadHijos" value="Si">
+                    <label>Si</label>
+                    <input type="radio" asp-for="familiares.CantidadHijos" value="No">
+                    <label>No</label><br />
+                    <label>	Numeros de Hijos:</label><br />
+                    <input type="number" class="form-control" asp-for="familiares.CantidadHijos" /><br /><br />
+                </div>
+            </div>
+        </div>
 
 
         <h2>Datos Laborales</h2>
         <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.laborales.Profesion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" asp-for="laborales.Profesion" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.laborales.OcupacionActual, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" asp-for="laborales.OcupacionActual" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.laborales.NomEmpresaNegocio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" asp-for="laborales.NomEmpresaNegocio" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.laborales.TelefonoEmpresaNegocio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" asp-for="laborales.TelefonoEmpresaNegocio" />
+            </div>
+        </div>
 
         <h2>Datos Academicos</h2>
         <hr />
+        <div class="form-group">
+            <label>Nivel de estudio: </label>
+            <div class="col-md-10">
+                <select class="custom-select" asp-for="academicos.NivelEstudio">
+                    <option value="Primaria">Primaria</option>
+                    <option value="Secundaria">Secundaria</option>
+                    <option value="Tecnico">Tecnico</option>
+                    <option value="Grado">Grado</option>
+                    <option value="Postgrado-Maestria">Postgrado-Maestria</option>
+                    <option value="Doctorado">Doctorado</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>¿Alguna vez ha sido expulsado o suspendido de alguna	institución?</label>
+                <div class="col-md-10">
+                    <input type="radio" asp-for="academicos.ExplusadoSuspendido" value="Si">
+                    <label>Si</label>
+                    <input type="radio" asp-for="academicos.ExplusadoSuspendido" value="No">
+                    <label>No</label><br />
+                    <label>En caso	afirmativo,	¿por qué razón?</label><br />
+                    <textarea class="form-control" style="overflow:auto;resize:none" asp-for="academicos.RazonEXSUS" rows="5" cols="25"></textarea>
+                </div>
+            </div>
+        </div>
 
         <h2>Datos Eclesiasticos</h2>
         <hr />
