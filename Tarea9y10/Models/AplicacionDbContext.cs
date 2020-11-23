@@ -91,8 +91,11 @@ namespace Tarea9y10.Models
         [Key]
         public int DatosLaboralesId { get; set; }
         public string Profesion { get; set; }
+        [Display(Name = "Ocupación actual")]
         public string OcupacionActual { get; set; }
+        [Display(Name = "Nombre de la empresa o negocio")]
         public string NomEmpresaNegocio { get; set; }
+        [Display(Name = "Teléfono")]
         public string TelefonoEmpresaNegocio { get; set; }
     }
 

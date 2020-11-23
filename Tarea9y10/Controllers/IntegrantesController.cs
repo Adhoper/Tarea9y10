@@ -47,6 +47,21 @@ namespace Tarea9y10.Controllers
         [Route("create")]
         public IActionResult Create(Integrantes integrantes,Direccion direccion,DocumentoIdentificacion documento,DatosFamiliares familiares,DatosAcademicos academicos,DatosEclesiasticos eclesiasticos,DatosLaborales laborales,ImagesModel imgModel)
         {
+            //Agregar tipo de Documento
+
+            string wey = Request.Form["idc"];
+            if (wey == "Cedula")
+            {
+                documento.TipoDocumento = "Cedula";
+            }
+            else if (wey == "RNC")
+            {
+                documento.TipoDocumento = "RNC";
+            }
+            else
+            {
+                documento.TipoDocumento = "Pasaporte";
+            }
 
             //Adjuntar Documento
 
@@ -67,9 +82,9 @@ namespace Tarea9y10.Controllers
             bd.SaveChanges();
             bd.DatosLaborales.Add(laborales);
             bd.SaveChanges();
-            bd.DocumentoIdentificacion.Add(documento);
-            bd.SaveChanges();
             bd.Direccion.Add(direccion);
+            bd.SaveChanges();
+            bd.DocumentoIdentificacion.Add(documento);
             bd.SaveChanges();
 
             foreach (var direc in bd.Direccion)
@@ -135,7 +150,7 @@ namespace Tarea9y10.Controllers
             return fileName;
         }
 
-        //Agregar los documentos o imagenes a Documentos
+        //Agregar los documentos o imagenes a la carpeta Documentos
         private string UploadFileDoc(ImagesModel imgModel)
         {
             string fileName = null;

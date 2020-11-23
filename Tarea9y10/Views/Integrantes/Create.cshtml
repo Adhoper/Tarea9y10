@@ -9,7 +9,7 @@
 }
 
 
-
+    <h1>Registrarse</h1>
 
     <form method="post" asp-controller="Integrantes" asp-action="create" enctype="multipart/form-data">
 
@@ -140,16 +140,16 @@
             <div class="form-group">
                 <label>Tipo de Documento de Identidad</label>
                 <div class="col-md-10">
-                    <input type="radio" asp-for="documentoIdentificacion.TipoDocumento" value="Cedula">
-                    <label>Cedula</label><br>
-                    <input type="radio" asp-for="documentoIdentificacion.TipoDocumento" value="Pasaporte">
+                    <input type="radio" name="idc" value="Cedula">
+                    <label>Cedula</label>
+                    <input type="radio" name="idc"  value="Pasaporte">
                     <label>Pasaporte</label><br>
-                    <input type="radio" asp-for="documentoIdentificacion.TipoDocumento" value="RNC">
+                    <input type="radio" name="idc" value="RNC">
                     <label>RNC</label><br><br />
 
                     <label>Suba el Documento o Foto</label><br />
 
-                        <input asp-for="imgModel.Documento" multiple />
+                    <input asp-for="imgModel.Documento" multiple />
                 </div>
             </div>
 
@@ -159,23 +159,24 @@
         <h2>Datos Familiares</h2>
         <hr />
         <div class="form-group">
-            <label>Estado civil:</label>
+            <label>Estado Civil:</label>
             <div class="col-md-10">
                 <input type="radio" asp-for="familiares.EstadoCivil" value="Soltero">
                 <label>Soltero</label>
-                <input type="radio" asp-for="familiares.EstadoCivil" value="Cazado">
-                <label>Cazado</label><br />
-                <label>En Caso de que sea Cazado Nombre Esposa(o)</label><br />
+                <input type="radio" asp-for="familiares.EstadoCivil" value="Casado">
+                <label>Casado</label><br /><br />
+                <label>En Caso de que sea Casado/a Nombre Esposa/o</label><br />
                 <input type="text" class="form-control" asp-for="familiares.NombrePareja" />
-            </div>
+            </div><br />
+
             <div class="form-group">
-                <label>Hijos: </label>
+                <label>Tiene Hijos? </label>
                 <div class="col-md-10">
-                    <input type="radio" asp-for="familiares.CantidadHijos" value="Si">
+                    <input type="radio" asp-for="familiares.Hijos_Si_No" value="Si">
                     <label>Si</label>
-                    <input type="radio" asp-for="familiares.CantidadHijos" value="No">
-                    <label>No</label><br />
-                    <label>	Numeros de Hijos:</label><br />
+                    <input type="radio" asp-for="familiares.Hijos_Si_No" value="No">
+                    <label>No</label><br /><br />
+                    <label>En caso de tener diga el	cantidad de Hijos:</label><br />
                     <input type="number" class="form-control" asp-for="familiares.CantidadHijos" /><br /><br />
                 </div>
             </div>
@@ -222,7 +223,8 @@
                     <option value="Postgrado-Maestria">Postgrado-Maestria</option>
                     <option value="Doctorado">Doctorado</option>
                 </select>
-            </div>
+            </div><br />
+
             <div class="form-group">
                 <label>¿Alguna vez ha sido expulsado o suspendido de alguna	institución?</label>
                 <div class="col-md-10">
@@ -316,7 +318,7 @@
                 <label for="mujer">No</label><br><br />
 
                 <label>Si elijio "Si" diga cuantas veces</label><br />
-                <input type="number" class="form-control" asp-for="eclesiasticos.Disciplinatura" /><br /><br />
+                <input type="number" class="form-control" asp-for="eclesiasticos.CantVecesDisciplina" /><br /><br />
                 <label>Causa/s</label><br />
                 <textarea class="form-control" style="overflow:auto;resize:none" asp-for="eclesiasticos.CausaDisciplina" rows="5" cols="25"></textarea>
             </div>
