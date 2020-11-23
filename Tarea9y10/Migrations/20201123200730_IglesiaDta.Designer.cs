@@ -9,8 +9,8 @@ using Tarea9y10.Models;
 namespace Tarea9y10.Migrations
 {
     [DbContext(typeof(AplicacionDbContext))]
-    [Migration("20201123012237_DatosIglesia")]
-    partial class DatosIglesia
+    [Migration("20201123200730_IglesiaDta")]
+    partial class IglesiaDta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,6 +109,9 @@ namespace Tarea9y10.Migrations
                     b.Property<string>("EstadoCivil")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Hijos_Si_No")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NombrePareja")
                         .HasColumnType("TEXT");
 
@@ -169,13 +172,10 @@ namespace Tarea9y10.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Cedula")
+                    b.Property<string>("NombreDocumento")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Pasaporte")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RNC")
+                    b.Property<string>("TipoDocumento")
                         .HasColumnType("TEXT");
 
                     b.HasKey("DocIdentidadId");

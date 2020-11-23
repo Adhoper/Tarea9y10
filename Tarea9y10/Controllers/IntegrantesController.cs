@@ -48,24 +48,17 @@ namespace Tarea9y10.Controllers
         public IActionResult Create(Integrantes integrantes,Direccion direccion,DocumentoIdentificacion documento,DatosFamiliares familiares,DatosAcademicos academicos,DatosEclesiasticos eclesiasticos,DatosLaborales laborales,ImagesModel imgModel)
         {
 
+            //Adjuntar Documento
 
-            string DocIdent = Request.Form["identificacion"];
+            string stringFileNameDoc = UploadFileDoc(imgModel);
+            var ss = new DocumentoIdentificacion
+            {
+                NombreDocumento = stringFileNameDoc
+            };
+            
+            documento.NombreDocumento = stringFileNameDoc;
 
-            if (DocIdent == "Cedula")
-            {
-                //documento.Cedula
-            }
-            else if (DocIdent == "RNC")
-            {
-                //documento.RNC
-            }
-            else
-            {
-                //documento.Pasaporte
-            }
-
-            bd.DocumentoIdentificacion.Add(documento);
-            bd.SaveChanges();
+            
             bd.DatosFamiliares.Add(familiares);
             bd.SaveChanges();
             bd.DatosAcademicos.Add(academicos);
@@ -73,6 +66,8 @@ namespace Tarea9y10.Controllers
             bd.DatosEclesiasticos.Add(eclesiasticos);
             bd.SaveChanges();
             bd.DatosLaborales.Add(laborales);
+            bd.SaveChanges();
+            bd.DocumentoIdentificacion.Add(documento);
             bd.SaveChanges();
             bd.Direccion.Add(direccion);
             bd.SaveChanges();
@@ -102,11 +97,13 @@ namespace Tarea9y10.Controllers
                 integrantes.DatosLaboralesId = lab.DatosLaboralesId;
             }
 
+            //Agregar Imagen
             string stringFileName = UploadFile(imgModel);
             var integrante = new Integrantes
             {
                  Foto = stringFileName
             };
+
 
             integrantes.Foto = stringFileName;
             
@@ -118,7 +115,7 @@ namespace Tarea9y10.Controllers
            
         }
 
-
+        //Agregar la imagen a la carpeta Imagenes2x2
         private string UploadFile(ImagesModel imgModel)
         {
             string fileName = null;
@@ -137,8 +134,28 @@ namespace Tarea9y10.Controllers
             }
             return fileName;
         }
-       
 
-        
+        //Agregar los documentos o imagenes a Documentos
+        private string UploadFileDoc(ImagesModel imgModel)
+        {
+            string fileName = null;
+            if (imgModel.Documento != null)
+            {
+                string uploadDir = Path.Combine(webHostEnviroment.WebRootPath, "Documentos");
+                fileName = Guid.NewGuid().ToString() + "-" + imgModel.Documento.FileName;
+                string FilePath = Path.Combine(uploadDir, fileName);
+
+                using (var fileStream = new FileStream(FilePath, FileMode.Create))
+                {
+                    imgModel.Documento.CopyTo(fileStream);
+                }
+
+
+            }
+            return fileName;
+        }
+
+
+
     }
 }

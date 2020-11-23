@@ -72,9 +72,8 @@ namespace Tarea9y10.Models
     {
         [Key]
         public int DocIdentidadId { get; set; }
-        public string Cedula { get; set; }
-        public string RNC { get; set; }
-        public string Pasaporte { get; set; }
+        public string TipoDocumento { get; set; }
+        public string NombreDocumento { get; set; }
     }
 
     public class DatosFamiliares
@@ -83,7 +82,7 @@ namespace Tarea9y10.Models
         public int DatosFamiliaresId { get; set; }
         public string EstadoCivil { get; set; }
         public string NombrePareja { get; set; }
-
+        public string Hijos_Si_No { get; set; }
         public string CantidadHijos { get; set; }
     }
 
@@ -110,6 +109,7 @@ namespace Tarea9y10.Models
         public DateTime FechaAceptadoIglesia { get; set; }
 
         [Display(Name = "Denominacion a la que Pertenece")]
+
         public string DenominacionPerteneciente { get; set; }
 
         public string NombreIglesiaActual { get; set; }

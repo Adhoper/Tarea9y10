@@ -9,5 +9,6 @@ namespace Tarea9y10.ImageModel
     public class ImagesModel
     {
         public IFormFile Foto { get; set; }
+        public IFormFile Documento { get; set; }
     }
 }

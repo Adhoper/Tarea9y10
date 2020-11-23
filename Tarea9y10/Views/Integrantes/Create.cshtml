@@ -140,15 +140,16 @@
             <div class="form-group">
                 <label>Tipo de Documento de Identidad</label>
                 <div class="col-md-10">
-                    <input type="radio" name="identificacion" value="Cedula">
+                    <input type="radio" asp-for="documentoIdentificacion.TipoDocumento" value="Cedula">
                     <label>Cedula</label><br>
-                    <input type="radio" name="identificacion" value="Pasaporte">
+                    <input type="radio" asp-for="documentoIdentificacion.TipoDocumento" value="Pasaporte">
                     <label>Pasaporte</label><br>
-                    <input type="radio" name="identificacion" value="RNC">
+                    <input type="radio" asp-for="documentoIdentificacion.TipoDocumento" value="RNC">
                     <label>RNC</label><br><br />
 
                     <label>Suba el Documento o Foto</label><br />
-                    <input type="file" multiple />
+
+                        <input asp-for="imgModel.Documento" multiple />
                 </div>
             </div>
 

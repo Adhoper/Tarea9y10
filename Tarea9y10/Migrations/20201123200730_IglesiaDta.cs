@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tarea9y10.Migrations
 {
-    public partial class DatosIglesia : Migration
+    public partial class IglesiaDta : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,6 +58,7 @@ namespace Tarea9y10.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     EstadoCivil = table.Column<string>(type: "TEXT", nullable: true),
                     NombrePareja = table.Column<string>(type: "TEXT", nullable: true),
+                    Hijos_Si_No = table.Column<string>(type: "TEXT", nullable: true),
                     CantidadHijos = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -103,9 +104,8 @@ namespace Tarea9y10.Migrations
                 {
                     DocIdentidadId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Cedula = table.Column<string>(type: "TEXT", nullable: true),
-                    RNC = table.Column<string>(type: "TEXT", nullable: true),
-                    Pasaporte = table.Column<string>(type: "TEXT", nullable: true)
+                    TipoDocumento = table.Column<string>(type: "TEXT", nullable: true),
+                    NombreDocumento = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
