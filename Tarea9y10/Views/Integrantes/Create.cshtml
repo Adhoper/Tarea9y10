@@ -21,7 +21,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.integrantes.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input asp-for="imgModel.Foto"  />
+                    <input asp-for="imgModel.Foto" />
                 </div>
             </div>
 
@@ -81,11 +81,12 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.integrantes.PaisResidenciaAct, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10 dropdown">
- 
-                    <select class="custom-select" asp-for="integrantes.PaisResidenciaAct">
-                        @foreach (var item in ViewBag.Paises ) {
 
-                        <option value="@item">@item</option>
+                    <select class="custom-select" asp-for="integrantes.PaisResidenciaAct">
+                        @foreach (var item in ViewBag.Paises)
+                        {
+
+                            <option value="@item">@item</option>
                         }
 
                     </select>
@@ -153,6 +154,16 @@
 
 
         </div><br />
+
+        <h2>Datos Familiares</h2>
+        <hr />
+
+
+        <h2>Datos Laborales</h2>
+        <hr />
+
+        <h2>Datos Academicos</h2>
+        <hr />
 
         <h2>Datos Eclesiasticos</h2>
         <hr />
@@ -304,17 +315,17 @@
             <label>¿Cuenta	con	el respaldo	de sus autoridades eclesiásticas para realizar estos estudios?</label>
             <div class="col-md-10">
                 <input type="radio" asp-for="eclesiasticos.RespaldoEstudios" value="Si">
-                <label >Si</label><br>
+                <label>Si</label><br>
                 <input type="radio" asp-for="eclesiasticos.RespaldoEstudios" value="No">
                 <label>No</label><br><br />
             </div>
         </div>
 
         <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Guardar" class="btn btn-primary" />
-                </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
+        </div>
     </form>
 
 
