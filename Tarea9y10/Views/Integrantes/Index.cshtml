@@ -4,72 +4,67 @@
     ViewData["Title"] = "Index";
 
     AplicacionDbContext bd = new AplicacionDbContext();
-    string[] Columnas = new string[] { "ID", "Imagen", "Nombre", "Apellido", "Fecha de Nacimiento", "Sexo", "Pais de Nacimiento", "Ciudad de Nacimiento", "Pais de Residencia Actual", "Ciudad de Residencia Actual", "Telefono", "Celular", "Email" };
+    string[] Columnas = new string[] { "ID", "Imagen", "Nombre", "Apellido", "Fecha Nac.", "Sexo", "Pais Nac.", "Celular", "Email","Opciones" };
 }
 
 <h1>Index</h1>
 
 <!--Este index es de prueba-->
+<div class="form">
+    <table class="table table-light table-hover table">
+        <thead class="thead-dark">
+            <tr style='text-align: center ';>
+                @foreach (var item in Columnas)
+                {
 
-<table class="table">
-    <thead>
-        <tr>
-            @foreach (var item in Columnas)
-            {
+                    <th>@item</th>
 
-                <th>@item</th>
+                }
+            </tr>
+        </thead>
+        @foreach (var datos in bd.Integrantes)
+        {
 
-            }
-        </tr>
-    </thead>
-    @foreach (var datos in bd.Integrantes)
-    {
+    <tr>
+        <td style='text-align: center ;font-family: Arial;'>
+            @datos.IntegranteId
+        </td>
+        <td style='text-align: center;font-family: Arial;'>
+            <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@datos.Foto" width="200" />
+        </td>
+        <td style='text-align: center ;font-family: Arial;'>
+            @datos.Nombres
+        </td>
+        <td style='text-align: center;font-family: Arial;'>
+            @datos.Apellidos
+        </td>
+        <td  style='text-align: center;font-family: Arial;'>
+            @datos.FechaNacimiento.ToString("dd/MM/yyyy")
+        </td>
+        <td  style=' text-align: center;font-family: Arial;'>
+            @datos.Sexo
+        </td>
+        <td style='text-align: center;font-family: Arial;'>
+            @datos.PaisNacimiento
+        </td>
+        <td style='text-align: center;font-family: Arial;'>
+            @datos.Celular
+        </td>
+        <td  style='text-align: center;font-family: Arial;'>
+            @datos.Email
+        </td>
+        <td style='text-align: center;font-family: Arial;'>
+            <div class="btn-group btn-group-sm">
+                @Html.ActionLink("Modificar", "Edit", new { id = datos.IntegranteId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Detalles", "Details", new { id = datos.IntegranteId }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Eliminar", "Delete", new { id = datos.IntegranteId }, new { @class = "btn btn-danger" })
+            </div>
+        </td>
 
-        <tr>
-            <td style='font-family: Arial;'>
-                @datos.IntegranteId
-            </td>
-            <td style='font-family: Arial;'>
-                <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@datos.Foto" width="200" />
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.Nombres
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.Apellidos
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.FechaNacimiento.ToString("dd/MM/yyyy")
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.Sexo
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.PaisNacimiento
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.CiudadNacimiento
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.PaisResidenciaAct
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.CiudadResidenciaAct
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.Telefono
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.Celular
-            </td>
-            <td style='font-family: Arial;'>
-                @datos.Email
-            </td>
-
-        </tr>
-    }
+    </tr>
+        }
 
 
-</table>
-
+    </table>
+</div>
 
