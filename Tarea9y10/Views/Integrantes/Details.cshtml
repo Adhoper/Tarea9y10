@@ -1,0 +1,36 @@
+﻿
+
+@{
+    ViewData["Title"] = "Details";
+
+    AplicacionDbContext bd = new AplicacionDbContext();
+
+    Integrantes integrantes = bd.Integrantes.Find(ViewBag.id);
+
+    int id = ViewBag.id;
+
+    var integrantesD = from ints in bd.Integrantes
+                           where ints.IntegranteId == id
+                           select ints;
+    var documentoIdnt = from doc in bd.DocumentoIdentificacion
+                           where doc.DocIdentidadId == id
+                           select doc;
+    var direccions = from dir in bd.Direccion
+                           where dir.DireccionId == id
+                           select dir;
+    var laborales = from labs in bd.DatosLaborales
+                           where labs.DatosLaboralesId == id
+                           select labs;
+    var academicos = from acd in bd.DatosAcademicos
+                           where acd.DatosAcademicosId == id
+                           select acd;
+    var eclesiastico = from ecl in bd.DatosEclesiasticos
+                           where ecl.DatosEclesiasticosId == id
+                           select ecl;
+    var familiares = from fam in bd.DatosFamiliares
+                           where fam.DatosFamiliaresId == id
+                           select fam;
+}
+
+<h1>Details</h1>
+

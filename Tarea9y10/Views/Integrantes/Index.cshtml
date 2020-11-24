@@ -1,10 +1,10 @@
-﻿@model Tarea9y10.Models.AplicacionDbContext
+﻿
 
 @{
     ViewData["Title"] = "Index";
 
     AplicacionDbContext bd = new AplicacionDbContext();
-    string[] Columnas = new string[] { "ID", "Imagen", "Nombre", "Apellido", "Fecha Nac.", "Sexo", "Pais Nac.", "Celular", "Email","Opciones" };
+    string[] Columnas = new string[] { "ID", "Imagen", "Nombre/s", "Apellido/s", "Fecha Nac.", "Sexo", "Celular", "Email","Opciones" };
 }
 
 <h1>Index</h1>
@@ -43,9 +43,6 @@
         </td>
         <td  style=' text-align: center;font-family: Arial;'>
             @datos.Sexo
-        </td>
-        <td style='text-align: center;font-family: Arial;'>
-            @datos.PaisNacimiento
         </td>
         <td style='text-align: center;font-family: Arial;'>
             @datos.Celular

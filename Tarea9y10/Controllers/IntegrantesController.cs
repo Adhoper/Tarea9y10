@@ -11,6 +11,8 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Tarea9y10.Controllers
 {
@@ -18,6 +20,7 @@ namespace Tarea9y10.Controllers
     {
 
         AplicacionDbContext bd = new AplicacionDbContext();
+        ViewModel vm = new ViewModel();
 
         private readonly IWebHostEnvironment webHostEnviroment;
 
@@ -25,10 +28,18 @@ namespace Tarea9y10.Controllers
         {
             webHostEnviroment = webHostEnvironments;
         }
+
+        [Route("~/{id?}")]
         public IActionResult Index()
         {
-            
-            return View(bd);
+
+            return View();
+        }
+
+        public ActionResult Details(int? id)
+        {
+            ViewBag.id = id;
+            return View();
         }
 
         [HttpGet]
