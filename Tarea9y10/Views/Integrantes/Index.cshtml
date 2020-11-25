@@ -4,16 +4,29 @@
     ViewData["Title"] = "Index";
 
     AplicacionDbContext bd = new AplicacionDbContext();
-    string[] Columnas = new string[] { "ID", "Imagen", "Nombre/s", "Apellido/s", "Fecha Nac.", "Sexo", "Celular", "Email","Opciones" };
+    string[] Columnas = new string[] { "ID", "Imagen", "Nombre/s", "Apellido/s", "Fecha Nac.", "Sexo", "Celular", "Email", "Opciones" };
+
+    #region
+    //string id = ViewBag.id;
+
+    //var integrantesD = from ints in bd.Integrantes
+    //select ints;
+
+    //integrantesD = integrantesD.Where(s => s.Nombres.Contains(id));
+    #endregion
+
 }
 
-<h1>Index</h1>
+<h1 class="text-center">Integrantes</h1>
 
 <!--Este index es de prueba-->
+
+<a style="margin-bottom:15px;" class="btn btn-primary" href="/create">Agregue un Nuevo Integrante</a>
+
 <div class="form">
     <table class="table table-light table-hover table">
         <thead class="thead-dark">
-            <tr style='text-align: center ';>
+            <tr style='text-align: center ' ;>
                 @foreach (var item in Columnas)
                 {
 
@@ -25,40 +38,40 @@
         @foreach (var datos in bd.Integrantes)
         {
 
-    <tr>
-        <td style='text-align: center ;font-family: Arial;'>
-            @datos.IntegranteId
-        </td>
-        <td style='text-align: center;font-family: Arial;'>
-            <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@datos.Foto" width="200" />
-        </td>
-        <td style='text-align: center ;font-family: Arial;'>
-            @datos.Nombres
-        </td>
-        <td style='text-align: center;font-family: Arial;'>
-            @datos.Apellidos
-        </td>
-        <td  style='text-align: center;font-family: Arial;'>
-            @datos.FechaNacimiento.ToString("dd/MM/yyyy")
-        </td>
-        <td  style=' text-align: center;font-family: Arial;'>
-            @datos.Sexo
-        </td>
-        <td style='text-align: center;font-family: Arial;'>
-            @datos.Celular
-        </td>
-        <td  style='text-align: center;font-family: Arial;'>
-            @datos.Email
-        </td>
-        <td style='text-align: center;font-family: Arial;'>
-            <div class="btn-group btn-group-sm">
-                @Html.ActionLink("Modificar", "Edit", new { id = datos.IntegranteId }, new { @class = "btn btn-warning" })
-                @Html.ActionLink("Detalles", "Details", new { id = datos.IntegranteId }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Eliminar", "Delete", new { id = datos.IntegranteId }, new { @class = "btn btn-danger" })
-            </div>
-        </td>
+            <tr>
+                <td style='text-align: center ;font-family: Arial;'>
+                    @datos.IntegranteId
+                </td>
+                <td style='text-align: center;font-family: Arial;'>
+                    <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@datos.Foto" width="200" />
+                </td>
+                <td style='text-align: center ;font-family: Arial;'>
+                    @datos.Nombres
+                </td>
+                <td style='text-align: center;font-family: Arial;'>
+                    @datos.Apellidos
+                </td>
+                <td style='text-align: center;font-family: Arial;'>
+                    @datos.FechaNacimiento.ToString("dd/MM/yyyy")
+                </td>
+                <td style=' text-align: center;font-family: Arial;'>
+                    @datos.Sexo
+                </td>
+                <td style='text-align: center;font-family: Arial;'>
+                    @datos.Celular
+                </td>
+                <td style='text-align: center;font-family: Arial;'>
+                    @datos.Email
+                </td>
+                <td style='text-align: center;font-family: Arial;'>
+                    <div class="btn-group btn-group-sm">
+                        @Html.ActionLink("Modificar", "Edit", new { id = datos.IntegranteId }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Detalles", "Details", new { id = datos.IntegranteId }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = datos.IntegranteId }, new { @class = "btn btn-danger" })
+                    </div>
+                </td>
 
-    </tr>
+            </tr>
         }
 
 

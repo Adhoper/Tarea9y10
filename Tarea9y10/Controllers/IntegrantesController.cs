@@ -29,17 +29,25 @@ namespace Tarea9y10.Controllers
             webHostEnviroment = webHostEnvironments;
         }
 
+
         [Route("~/{id?}")]
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
+
+            if (!String.IsNullOrEmpty(id))
+            {
+                ViewBag.id = id;
+            }
 
             return View();
         }
+
 
         public ActionResult Details(int? id)
         {
             ViewBag.id = id;
             return View();
+
         }
 
         [HttpGet]
@@ -54,6 +62,8 @@ namespace Tarea9y10.Controllers
             return View("Create", new ViewModel());
 
         }
+        #region
+
         [HttpPost]
         [Route("create")]
         public IActionResult Create(Integrantes integrantes,Direccion direccion,DocumentoIdentificacion documento,DatosFamiliares familiares,DatosAcademicos academicos,DatosEclesiasticos eclesiasticos,DatosLaborales laborales,ImagesModel imgModel)
@@ -140,6 +150,7 @@ namespace Tarea9y10.Controllers
             return RedirectToAction("Index");
            
         }
+        #endregion
 
         //Agregar la imagen a la carpeta Imagenes2x2
         private string UploadFile(ImagesModel imgModel)
@@ -168,7 +179,7 @@ namespace Tarea9y10.Controllers
             if (imgModel.Documento != null)
             {
                 string uploadDir = Path.Combine(webHostEnviroment.WebRootPath, "Documentos");
-                fileName = Guid.NewGuid().ToString() + "-" + imgModel.Documento.FileName;
+                fileName = imgModel.Documento.FileName;
                 string FilePath = Path.Combine(uploadDir, fileName);
 
                 using (var fileStream = new FileStream(FilePath, FileMode.Create))
