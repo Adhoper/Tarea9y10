@@ -191,6 +191,14 @@ namespace Tarea9y10.Controllers
             }
             return fileName;
         }
+        [HttpGet]
+        [Route("Delete")]
+        public IActionResult Delete(int? id)
+        {
+            bd.Integrantes.Remove(bd.Integrantes.Find(id));
+            bd.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
 
