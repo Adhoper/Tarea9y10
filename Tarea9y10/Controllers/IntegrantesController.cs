@@ -62,7 +62,7 @@ namespace Tarea9y10.Controllers
             return View("Create", new ViewModel());
 
         }
-        #region
+        #region Create
 
         [HttpPost]
         [Route("create")]
@@ -195,7 +195,57 @@ namespace Tarea9y10.Controllers
         [Route("Delete")]
         public IActionResult Delete(int? id)
         {
-            bd.Integrantes.Remove(bd.Integrantes.Find(id));
+            #region BorrarArchivos
+
+            //Borrar foto
+            var integrantesD = from ints in bd.Integrantes
+                               where ints.IntegranteId == id
+                               select ints;
+
+            foreach (var d in integrantesD) {
+
+                string fileName = ("wwwroot/Imagenes2x2/" + d.Foto);
+
+                if (fileName != null || fileName != string.Empty)
+                {
+                    if ((System.IO.File.Exists(fileName)))
+                    {
+                        System.IO.File.Delete(fileName);
+                    }
+
+                }
+            }
+
+            //Borrar Documento
+            var documentoIdnt = from doc in bd.DocumentoIdentificacion
+                                where doc.DocIdentidadId == id
+                                select doc;
+
+            foreach (var d in documentoIdnt)
+            {
+
+                string fileName = ("wwwroot/Documentos/" + d.NombreDocumento);
+
+                if (fileName != null || fileName != string.Empty)
+                {
+                    if ((System.IO.File.Exists(fileName)))
+                    {
+                        System.IO.File.Delete(fileName);
+                    }
+
+                }
+            }
+
+            #endregion
+
+            bd.Direccion.Remove(bd.Direccion.Find(id));
+            bd.DocumentoIdentificacion.Remove(bd.DocumentoIdentificacion.Find(id));
+            bd.DatosAcademicos.Remove(bd.DatosAcademicos.Find(id));
+            bd.DatosEclesiasticos.Remove(bd.DatosEclesiasticos.Find(id));
+            bd.DatosFamiliares.Remove(bd.DatosFamiliares.Find(id));
+            bd.DatosLaborales.Remove(bd.DatosLaborales.Find(id));
+
+
             bd.SaveChanges();
             return RedirectToAction("Index");
         }

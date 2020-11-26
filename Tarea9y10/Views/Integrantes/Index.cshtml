@@ -67,7 +67,7 @@
                     <div class="btn-group btn-group-sm">
                         @Html.ActionLink("Modificar", "Edit", new { id = datos.IntegranteId }, new { @class = "btn btn-warning" })
                         @Html.ActionLink("Detalles", "Details", new { id = datos.IntegranteId }, new { @class = "btn btn-success" })
-                        <a asp-action="Delete" asp-route-id="@datos.IntegranteId" onclick="return confirm('estas seguro que quieres borrar esto?')" class = "btn btn-danger" >Eliminar</a>
+                        <a asp-action="Delete" asp-route-id="@datos.IntegranteId" onclick="return confirm('Estas seguro que quieres borrar esto?')" class = "btn btn-danger" >Eliminar</a>
                     </div>
                 </td>
 
