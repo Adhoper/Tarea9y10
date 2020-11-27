@@ -82,7 +82,7 @@
 }
 @foreach (var direccion in direccions)
 {
-    <h1 class="text-center">Direccion </h1>
+    <h2 class="text-center">Direccion </h2>
 
     <strong class="text-primary">Calle: </strong>
     @direccion.Calle
@@ -103,13 +103,13 @@
 
 @foreach (var documento in documentoIdnt)
 {
-    <h1 class="text-center">Documentos </h1>
+    <h2 class="text-center">Documentos </h2>
 
-    <strong class="text-primary">Imagen del Documento: </strong>
+    <strong class="text-primary">Tipo de Documento: </strong>
     @documento.NombreDocumento
     <br />
-    <strong class="text-primary">Tipo De Documento: </strong>
-    <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@documento.NombreDocumento" width="150" />
+    <strong class="text-primary">Imagen Del Documento: </strong>
+   @documento.NombreDocumento
     <br />
 
 
@@ -119,7 +119,7 @@
 @foreach (var familiar in familiares)
     
 {
-    <h1 class="text-center">Familiar</h1>
+    <h2 class="text-center">Familiar</h2>
     <strong class="text-primary">Tiene hijos?</strong>
     @familiar.Hijos_Si_No
     <br />
@@ -137,7 +137,7 @@
 @foreach (var laboral in laborales)
 {
 
-    <h1 class="text-center">Datos Laborales </h1>
+    <h2 class="text-center">Datos Laborales </h2>
 
     <strong class="text-primary">Nombre De La Empresa O Negocio: </strong>
     @laboral.NomEmpresaNegocio
@@ -155,7 +155,7 @@
 }
 @foreach (var academi in academicos)
 {
-    <h1 class="text-center">Datos Academicos </h1>
+    <h2 class="text-center">Datos Academicos </h2>
 
     <strong class="text-primary">Nivel De Estudio: </strong>
     @academi.NivelEstudio
@@ -174,7 +174,7 @@
 
 @foreach (var eclesiastic in eclesiastico)
 {
-    <h1 class="text-center">Datos Eclesiaticos</h1>
+    <h2 class="text-center">Datos Eclesiaticos</h2>
     <strong class="text-primary">Cantidad De Veces En Disciplina: </strong>
 
     @eclesiastic.CantVecesDisciplina
