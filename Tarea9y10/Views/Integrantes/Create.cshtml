@@ -308,21 +308,7 @@
                 <input type="text" class="form-control" asp-for="eclesiasticos.NombrePastorActual" required />
             </div>
         </div>
-
-        <div class="form-group">
-            <label>Ha sido Disciplinado alguna vez?</label>
-            <div class="col-md-10">
-                <input type="radio" asp-for="eclesiasticos.Disciplinatura" value="Si" required>
-                <label for="hombre">Si</label><br>
-                <input type="radio" asp-for="eclesiasticos.Disciplinatura" value="No" required>
-                <label for="mujer">No</label><br><br />
-
-                <label>Si elijio "Si" diga cuantas veces</label><br />
-                <input type="number" class="form-control" asp-for="eclesiasticos.CantVecesDisciplina" /><br /><br />
-                <label>Causa/s</label><br />
-                <textarea class="form-control" style="overflow:auto;resize:none" asp-for="eclesiasticos.CausaDisciplina" rows="5" cols="25"></textarea>
-            </div>
-        </div>
+    
 
         <div class="form-group">
             <label>En la actualidad ocupa usted alguna de estasfunciones:</label>
