@@ -84,15 +84,6 @@ namespace Tarea9y10.Controllers
                 documento.TipoDocumento = "Pasaporte";
             }
 
-            //Adjuntar Documento
-
-            string stringFileNameDoc = UploadFileDoc(imgModel);
-            var ss = new DocumentoIdentificacion
-            {
-                NombreDocumento = stringFileNameDoc
-            };
-            
-            documento.NombreDocumento = stringFileNameDoc;
 
             
             bd.DatosFamiliares.Add(familiares);
@@ -105,6 +96,18 @@ namespace Tarea9y10.Controllers
             bd.SaveChanges();
             bd.Direccion.Add(direccion);
             bd.SaveChanges();
+
+
+            //Adjuntar Documento
+
+            string stringFileNameDoc = UploadFileDoc(imgModel);
+            var ss = new DocumentoIdentificacion
+            {
+                NombreDocumento = stringFileNameDoc
+            };
+
+            documento.NombreDocumento = stringFileNameDoc;
+
             bd.DocumentoIdentificacion.Add(documento);
             bd.SaveChanges();
 
@@ -191,6 +194,7 @@ namespace Tarea9y10.Controllers
             }
             return fileName;
         }
+
         [HttpGet]
         [Route("Delete")]
         public IActionResult Delete(int? id)
