@@ -179,7 +179,7 @@ namespace Tarea9y10.Controllers
             if (imgModel.Documento != null)
             {
                 string uploadDir = Path.Combine(webHostEnviroment.WebRootPath, "Documentos");
-                fileName = imgModel.Documento.FileName;
+                fileName = Guid.NewGuid().ToString() + "-" + imgModel.Documento.FileName;
                 string FilePath = Path.Combine(uploadDir, fileName);
 
                 using (var fileStream = new FileStream(FilePath, FileMode.Create))
