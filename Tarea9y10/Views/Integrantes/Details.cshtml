@@ -10,27 +10,123 @@
     int id = ViewBag.id;
 
     var integrantesD = from ints in bd.Integrantes
-                           where ints.IntegranteId == id
-                           select ints;
+                       where ints.IntegranteId == id
+                       select ints;
     var documentoIdnt = from doc in bd.DocumentoIdentificacion
-                           where doc.DocIdentidadId == id
-                           select doc;
+                        where doc.DocIdentidadId == id
+                        select doc;
     var direccions = from dir in bd.Direccion
-                           where dir.DireccionId == id
-                           select dir;
+                     where dir.DireccionId == id
+                     select dir;
     var laborales = from labs in bd.DatosLaborales
-                           where labs.DatosLaboralesId == id
-                           select labs;
+                    where labs.DatosLaboralesId == id
+                    select labs;
     var academicos = from acd in bd.DatosAcademicos
-                           where acd.DatosAcademicosId == id
-                           select acd;
+                     where acd.DatosAcademicosId == id
+                     select acd;
     var eclesiastico = from ecl in bd.DatosEclesiasticos
-                           where ecl.DatosEclesiasticosId == id
-                           select ecl;
+                       where ecl.DatosEclesiasticosId == id
+                       select ecl;
     var familiares = from fam in bd.DatosFamiliares
-                           where fam.DatosFamiliaresId == id
-                           select fam;
+                     where fam.DatosFamiliaresId == id
+                     select fam;
+
 }
 
 <h1>Details</h1>
+@foreach (var integrante in integrantesD)
+{
+    <tr>
+        <td>@integrante.IntegranteId</td>
+        <td>@integrante.Nombres</td>
+        <td>@integrante.Apellidos</td>
+        <td>@integrante.Celular</td>
+        <td>@integrante.CiudadNacimiento</td>
+        <td>@integrante.CiudadResidenciaAct</td>
+        <td>@integrante.DatosAcademicosId</td>
+        <td>@integrante.DatosEclesiasticosId</td>
+        <td>@integrante.DatosFamiliaresId</td>
+        <td>@integrante.DatosLaboralesId</td>
+        <td>@integrante.DireccionId</td>
+        <td>@integrante.DocIdentidadId</td>
+        <td>@integrante.Email</td>
+        <td>@integrante.FechaNacimiento</td>
+        <td>@integrante.Foto</td>
+        <td>@integrante.PaisNacimiento</td>
+        <td>@integrante.PaisResidenciaAct</td>
+        <td>@integrante.Sexo</td>
+        <td>@integrante.Telefono</td>
 
+
+    </tr>
+}
+@foreach (var documento in documentoIdnt)
+{
+    <tr>
+        <td>@documento.DocIdentidadId</td>
+        <td>@documento.NombreDocumento</td>
+        <td>@documento.TipoDocumento</td>
+
+
+
+    </tr>
+}
+@foreach (var direccion in direccions)
+{
+    <tr>
+        <td>@direccion.DireccionId</td>
+        <td>@direccion.Calle</td>
+        <td>@direccion.NumVivienda</td>
+        <td>@direccion.Provincia</td>
+        <td>@direccion.Sector</td>
+
+
+    </tr>
+}
+@foreach (var laboral in laborales)
+{
+    <tr>
+        <td>@laboral.DatosLaboralesId</td>
+        <td>@laboral.NomEmpresaNegocio</td>
+        <td>@laboral.OcupacionActual</td>
+        <td>@laboral.Profesion</td>
+        <td>@laboral.TelefonoEmpresaNegocio</td>
+    </tr>
+}
+@foreach (var academi in academicos)
+{
+    <tr>
+        <td>@academicos</td>
+    </tr>
+}
+@foreach (var eclesiastic in eclesiastico)
+{
+    <tr>
+        <td>@eclesiastic.DatosEclesiasticosId</td>
+        <td>@eclesiastic.CantVecesDisciplina</td>
+        <td>@eclesiastic.CausaDisciplina</td>
+        <td>@eclesiastic.DenominacionPerteneciente</td>
+        <td>@eclesiastic.DiosLlamado</td>
+        <td>@eclesiastic.Disciplinatura</td>
+        <td>@eclesiastic.FechaAceptadoIglesia</td>
+        <td>@eclesiastic.FechaBautismo</td>
+        <td>@eclesiastic.FechaConversion</td>
+        <td>@eclesiastic.FuncionesOcupa</td>
+        <td>@eclesiastic.IglesiaAnterior</td>
+        <td>@eclesiastic.MetasVida</td>
+        <td>@eclesiastic.MinisterioServidos</td>
+        <td>@eclesiastic.MinisteriosFrutosPQ</td>
+        <td>@eclesiastic.NombreIglesiaActual</td>
+        <td>@eclesiastic.NombrePastorActual</td>
+        <td>@eclesiastic.RespaldoEstudios</td>
+    </tr>
+}
+@foreach (var familiar in familiares)
+{
+    <td>@familiar.DatosFamiliaresId</td>
+    <tr><td>@familiar.CantidadHijos</td></tr>
+
+    <td>@familiar.EstadoCivil</td>
+    <td>@familiar.Hijos_Si_No</td>
+    <td>@familiar.NombrePareja</td>
+}
