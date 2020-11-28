@@ -33,140 +33,190 @@
 
 }
 
+
 <h1>Detalles</h1>
+
 @foreach (var integrante in integrantesD)
 {
-    <h3 class="text-center">Datos Personales</h3>
-    <strong class="text-primary">ID Integrantes: </strong>
-    @integrante.IntegranteId
-    <br />
-    <strong class="text-primary">Nombre: </strong>
-    @integrante.Nombres
-    <br />
-    <strong class="text-primary">Apellido: </strong>
-    @integrante.Apellidos
-    <br />
-    <strong class="text-primary">Celular: </strong>
-    @integrante.Celular
-    <br />
-    <strong class="text-primary">Ciudad De Nacimiento: </strong>
-    @integrante.CiudadNacimiento
-    <br />
-    <strong class="text-primary">Ciudad De Residencia Actual: </strong>
-    @integrante.CiudadResidenciaAct
-    <br />
-    <strong class="text-primary">Email: </strong>
-    @integrante.Email
-    <br />
-    <strong class="text-primary">Fecha De Nacimiento: </strong>
-    @integrante.FechaNacimiento
-    <br />
-    <strong class="text-primary">Imagen: </strong>
-    <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@integrante.Foto" width="150" />
-    <br />
-    <strong class="text-primary">Pais De Nacimiento: </strong>
-    @integrante.PaisNacimiento
-    <br />
-    <strong class="text-primary">Pais De Residencia: </strong>
-    @integrante.PaisResidenciaAct
-    <br />
-    <strong class="text-primary">Sexo: </strong>
-    @integrante.Sexo
-    <br />
-    <strong class="text-primary">Telefono: </strong>
-    @integrante.Telefono
-    <br />
+    <div style="float:right">
+        <center>
+            <strong class="text-primary">Foto: </strong><br />
+        </center>
+        <img class="img-thumbnail img-fluid" src="~/Imagenes2x2/@integrante.Foto" width="300" />
+        <br />
+    </div>
+    <div class="form-group">
+        <h3>Datos Personales</h3>
+        <strong class="text-primary">ID:</strong>
+        @integrante.IntegranteId
+        <br />
+        <strong class="text-primary">Nombre: </strong>
+        @integrante.Nombres
+        <br />
+        <strong class="text-primary">Apellido: </strong>
+        @integrante.Apellidos
+        <br />
+        <strong class="text-primary">Celular: </strong>
+        @integrante.Celular
+        <br />
+        <strong class="text-primary">Ciudad De Nacimiento: </strong>
+        @integrante.CiudadNacimiento
+        <br />
+        <strong class="text-primary">Ciudad De Residencia Actual: </strong>
+        @integrante.CiudadResidenciaAct
+        <br />
+        <strong class="text-primary">Email: </strong>
+        @integrante.Email
+        <br />
+        <strong class="text-primary">Fecha De Nacimiento: </strong>
+        @integrante.FechaNacimiento.ToString("dd/MM/yyyy")
+        <br />
+        <strong class="text-primary">Pais De Nacimiento: </strong>
+        @integrante.PaisNacimiento
+        <br />
+        <strong class="text-primary">Pais De Residencia: </strong>
+        @integrante.PaisResidenciaAct
+        <br />
+        <strong class="text-primary">Sexo: </strong>
+        @integrante.Sexo
+        <br />
+        <strong class="text-primary">Telefono: </strong>
+        @integrante.Telefono
+        <br />
+
+    </div>
 
 
 
 }
 @foreach (var direccion in direccions)
 {
-    <h3 class="text-center">Direccion </h3>
+    <h3>Direccion </h3>
 
-    <strong class="text-primary">Calle: </strong>
-    @direccion.Calle
-    <br />
-    <strong class="text-primary">Numero De Vivienda: </strong>
-    @direccion.NumVivienda
-    <br />
-    <strong class="text-primary">Provincia: </strong>
-    @direccion.Provincia
-    <br />
-    <strong class="text-primary">Sector: </strong>
-    @direccion.Sector
-    <br />
-
+    <div class="form-group">
+        <strong class="text-primary">Calle: </strong>
+        @direccion.Calle
+        <br />
+        <strong class="text-primary">Numero De Vivienda: </strong>
+        @direccion.NumVivienda
+        <br />
+        <strong class="text-primary">Provincia: </strong>
+        @direccion.Provincia
+        <br />
+        <strong class="text-primary">Sector: </strong>
+        @direccion.Sector
+        <br />
+    </div>
 
 
 }
 
 @foreach (var documento in documentoIdnt)
 {
-    <h3 class="text-center">Documentos </h3>
+    <h3>Documentos </h3>
 
-    <strong class="text-primary">Tipo de Documento: </strong>
-    @documento.TipoDocumento
-    <br />
-    <strong class="text-primary">Imagen Del Documento: </strong>
-   @documento.NombreDocumento
-    <br />
+    <div class="form-group">
+        <strong class="text-primary">Tipo de Documento: </strong>
+        @documento.TipoDocumento
+        <br />
+        <strong class="text-primary">Nombre Del Documento: </strong>
+        @documento.NombreDocumento
+        <br />
 
-
+    </div>
 
 
 }
 @foreach (var familiar in familiares)
-    
 {
-    <h3 class="text-center">Familiar</h3>
-    <strong class="text-primary">Tiene hijos?</strong>
-    @familiar.Hijos_Si_No
-    <br />
-    <strong class="text-primary">Cantidad De Hijos</strong>
-    @familiar.CantidadHijos
-    <br />
-    <strong class="text-primary">Estado Civil</strong>
-    @familiar.EstadoCivil
-    <br />
 
-    <strong class="text-primary">Nombre De Pareja</strong>
-    @familiar.NombrePareja
-    <br />
+    <div class="form-group">
+        <h3>Familiar</h3>
+        <strong class="text-primary">Tiene hijos?</strong>
+        @familiar.Hijos_Si_No
+        <br />
+        <strong class="text-primary">Cantidad De Hijos:</strong>
+        @{
+            int? cantidadhijos = Convert.ToInt32(familiar.CantidadHijos);
+            string mensaje = "";
+            if (cantidadhijos == null)
+            {
+                mensaje = "No tiene Hijos";
+            }
+            else
+            {
+                mensaje = cantidadhijos.ToString();
+            }
+        }
+
+        @mensaje
+        <br />
+        <strong class="text-primary">Estado Civil:</strong>
+        @familiar.EstadoCivil
+        <br />
+
+        <strong class="text-primary">Nombre De Pareja:</strong>
+        @{
+            string pareja = familiar.NombrePareja;
+            if (pareja == null)
+            {
+                mensaje = "No Tiene Pareja";
+            }
+            else
+            {
+                mensaje = familiar.NombrePareja;
+            }
+        }
+        @mensaje
+        <br />
+    </div>
 }
 @foreach (var laboral in laborales)
 {
+    <div class="form-group">
+        <h3>Datos Laborales </h3>
 
-    <h3 class="text-center">Datos Laborales </h3>
-
-    <strong class="text-primary">Nombre De La Empresa O Negocio: </strong>
-    @laboral.NomEmpresaNegocio
-    <br />
-    <strong class="text-primary">Ocupacion Actual: </strong>
-    @laboral.OcupacionActual
-    <br />
-    <strong class="text-primary">Profesion: </strong>
-    @laboral.Profesion
-    <br />
-    <strong class="text-primary">Telefono De La Empresa O Negocio: </strong>
-    @laboral.TelefonoEmpresaNegocio
-    <br />
-
+        <strong class="text-primary">Nombre De La Empresa O Negocio: </strong>
+        @laboral.NomEmpresaNegocio
+        <br />
+        <strong class="text-primary">Ocupacion Actual: </strong>
+        @laboral.OcupacionActual
+        <br />
+        <strong class="text-primary">Profesion: </strong>
+        @laboral.Profesion
+        <br />
+        <strong class="text-primary">Telefono De La Empresa O Negocio: </strong>
+        @laboral.TelefonoEmpresaNegocio
+        <br />
+    </div>
 }
 @foreach (var academi in academicos)
 {
-    <h3 class="text-center">Datos Academicos </h3>
+    <div class="form-group">
+        <h3>Datos Academicos </h3>
 
-    <strong class="text-primary">Nivel De Estudio: </strong>
-    @academi.NivelEstudio
-    <br />
-    <strong class="text-primary">Explusado o Suspendido: </strong>
-    @academi.ExplusadoSuspendido
-    <br />
-    <strong class="text-primary">Razones Del Expulso o Suspendido </strong>
-    @academi.RazonEXSUS
-    <br />
-    
+        <strong class="text-primary">Nivel De Estudio: </strong>
+        @academi.NivelEstudio
+        <br />
+        <strong class="text-primary">Explusado o Suspendido: </strong>
+        @academi.ExplusadoSuspendido
+        <br />
+        @{
+            string expulsado = academi.ExplusadoSuspendido;
+            string mensaje = "";
+            if (expulsado == "No")
+            {
+                mensaje = "No ha sido expulsado o Suspendido";
+            }
+            else
+            {
+                mensaje = academi.RazonEXSUS;
+            }
+        }
+        <strong class="text-primary">Razones Del Expulso o Suspendido: </strong>
+        @mensaje
+        <br />
+    </div>
 
 }
 
@@ -174,58 +224,74 @@
 
 @foreach (var eclesiastic in eclesiastico)
 {
-    <h3 class="text-center">Datos Eclesiaticos</h3>
-    <strong class="text-primary">Cantidad De Veces En Disciplina: </strong>
+    <div class="form-group">
+        <h3>Datos Eclesiaticos</h3>
 
-    @eclesiastic.CantVecesDisciplina
-    <br />
-    <strong class="text-primary">Causa De La Disciplina: </strong>
-    @eclesiastic.CausaDisciplina
-    <br />
-    <strong class="text-primary">Denominacion Perteneciente: </strong>
-    @eclesiastic.DenominacionPerteneciente
-    <br />
-    <strong class="text-primary">Llamado: </strong>
-    @eclesiastic.DiosLlamado
-    <br />
-    <strong class="text-primary">Disciplida u: </strong>
-    @eclesiastic.Disciplinatura
-    <br />
-    <strong class="text-primary">Fecha De Aceptacion En La Iglesia: </strong>
-    @eclesiastic.FechaAceptadoIglesia
-    <br />
-    <strong class="text-primary">Fecha De Bautismo: </strong>
-    @eclesiastic.FechaBautismo
-    <br />
-    <strong class="text-primary">Fecha De Conversion: </strong>
-    @eclesiastic.FechaConversion
-    <br />
-    <strong class="text-primary">Funciones en la iglesia: </strong>
-    @eclesiastic.FuncionesOcupa
-    <br />
-    <strong class="text-primary">Iglesias Anteriores: </strong>
-    @eclesiastic.IglesiaAnterior
-    <br />
-    <strong class="text-primary">Metas De La Vida: </strong>
-    @eclesiastic.MetasVida
-    <br />
-    <strong class="text-primary">Ministerios Servicio: </strong>
-    @eclesiastic.MinisterioServidos
-    <br />
-    <strong class="text-primary">Frutos Ministerio? </strong>
-    @eclesiastic.MinisteriosFrutosPQ
-    <br />
-    <strong class="text-primary">Nombre De La Iglesia Actualmente: </strong>
-    @eclesiastic.NombreIglesiaActual
-    <br />
-    <strong class="text-primary">Nombre Pastor: </strong>
-    @eclesiastic.NombrePastorActual
-    <br />
-    <strong class="text-primary">Respaldo En Estudio: </strong>
-    @eclesiastic.RespaldoEstudios
-    <br />
+        <strong class="text-primary">Denominacion Perteneciente: </strong>
+        @eclesiastic.DenominacionPerteneciente
+        <br />
+        <strong class="text-primary">Llamado: </strong>
+        @eclesiastic.DiosLlamado
+        <br />
+        <strong class="text-primary">Ha sido Disciplinado?</strong>
+        @eclesiastic.Disciplinatura
+        <br />
+        @{
+            string disciplina = eclesiastic.Disciplinatura;
+            string mensaje = "";
+            string causamensaje = "";
+            if (disciplina == "No")
+            {
+                mensaje = "Ninguna vez";
+                causamensaje = "No ha sido Disciplinado/a";
+            }
+            else
+            {
+                mensaje = eclesiastic.CantVecesDisciplina;
+                causamensaje = eclesiastic.CausaDisciplina;
+            }
+        }
+        <strong class="text-primary">Cantidad De Veces En Disciplina: </strong>
+        @mensaje
+        <br />
+        <strong class="text-primary">Causa De La Disciplina: </strong>
+        @causamensaje
+        <br />
+        <strong class="text-primary">Fecha De Aceptacion En La Iglesia: </strong>
+        @eclesiastic.FechaAceptadoIglesia.ToString("dd/MM/yyyy")
+        <br />
+        <strong class="text-primary">Fecha De Bautismo: </strong>
+        @eclesiastic.FechaBautismo.ToString("dd/MM/yyyy")
+        <br />
+        <strong class="text-primary">Fecha De Conversion: </strong>
+        @eclesiastic.FechaConversion.ToString("dd/MM/yyyy")
+        <br />
+        <strong class="text-primary">Funciones en la iglesia: </strong>
+        @eclesiastic.FuncionesOcupa
+        <br />
+        <strong class="text-primary">Iglesias Anteriores: </strong>
+        @eclesiastic.IglesiaAnterior
+        <br />
+        <strong class="text-primary">Metas De La Vida: </strong>
+        @eclesiastic.MetasVida
+        <br />
+        <strong class="text-primary">Ministerios Servicio: </strong>
+        @eclesiastic.MinisterioServidos
+        <br />
+        <strong class="text-primary">Frutos Ministerio? </strong>
+        @eclesiastic.MinisteriosFrutosPQ
+        <br />
+        <strong class="text-primary">Nombre De La Iglesia Actualmente: </strong>
+        @eclesiastic.NombreIglesiaActual
+        <br />
+        <strong class="text-primary">Nombre Pastor: </strong>
+        @eclesiastic.NombrePastorActual
+        <br />
+        <strong class="text-primary">Respaldo En Estudio: </strong>
+        @eclesiastic.RespaldoEstudios
+        <br />
 
-
+    </div>
 }
 
 
