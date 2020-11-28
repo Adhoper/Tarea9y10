@@ -195,6 +195,97 @@ namespace Tarea9y10.Controllers
             return fileName;
         }
 
+
+        [HttpGet]
+        [Route("Update")]
+        public IActionResult Update(int id)
+        {
+            var integrante = bd.Integrantes.FirstOrDefault(x => x.IntegranteId == id);
+            var direccion = bd.Direccion.FirstOrDefault(x => x.DireccionId == id);
+            var documentos = bd.DocumentoIdentificacion.FirstOrDefault(x => x.DocIdentidadId == id);
+            var datosacademicos = bd.DatosAcademicos.FirstOrDefault(x => x.DatosAcademicosId == id);
+            var datoseucli = bd.DatosEclesiasticos.FirstOrDefault(x => x.DatosEclesiasticosId == id);
+            var datosfamiliares = bd.DatosFamiliares.FirstOrDefault(x => x.DatosFamiliaresId == id);
+            var datoslaborales = bd.DatosLaborales.FirstOrDefault(x => x.DatosLaboralesId == id);
+            ModelPaises MP = new ModelPaises();
+            //Trae todos los pais
+            ViewBag.Paises = MP.ListaPaises();
+
+            ViewModel viewModel = new ViewModel
+            {
+                academicos = datosacademicos,
+                laborales = datoslaborales,
+                direccion = direccion,
+                documentoIdentificacion = documentos,
+                familiares = datosfamiliares,
+                eclesiasticos = datoseucli,
+                integrantes = integrante
+            };
+
+
+            return View("update", viewModel);
+        }
+        [HttpPost]
+        [Route("Update")]
+        public async Task<IActionResult> Update(int id, Integrantes integrantes, Direccion direccion, DocumentoIdentificacion documento, DatosFamiliares familiares, DatosAcademicos academicos, DatosEclesiasticos eclesiasticos, DatosLaborales laborales, ImagesModel imgModel)
+        {
+            if (id != integrantes.IntegranteId)
+            {
+                return NotFound();
+            }
+
+            //Adjuntar Documento
+
+            string stringFileNameDoc = UploadFileDoc(imgModel);
+            var ss = new DocumentoIdentificacion
+            {
+                NombreDocumento = stringFileNameDoc
+            };
+
+            documento.NombreDocumento = stringFileNameDoc;
+
+            foreach (var direc in bd.Direccion)
+            {
+                integrantes.DireccionId = direc.DireccionId;
+            }
+            foreach (var fam in bd.DatosFamiliares)
+            {
+                integrantes.DatosFamiliaresId = fam.DatosFamiliaresId;
+            }
+            foreach (var aca in bd.DatosAcademicos)
+            {
+                integrantes.DatosAcademicosId = aca.DatosAcademicosId;
+            }
+            foreach (var ecle in bd.DatosEclesiasticos)
+            {
+                integrantes.DatosEclesiasticosId = ecle.DatosEclesiasticosId;
+            }
+            foreach (var doc in bd.DocumentoIdentificacion)
+            {
+                integrantes.DocIdentidadId = doc.DocIdentidadId;
+            }
+            foreach (var lab in bd.DatosLaborales)
+            {
+                integrantes.DatosLaboralesId = lab.DatosLaboralesId;
+            }
+
+            bd.DatosFamiliares.Update(familiares);
+            bd.Direccion.Update(direccion);
+            await bd.SaveChangesAsync();
+            bd.DocumentoIdentificacion.Update(documento);
+            await bd.SaveChangesAsync();
+            bd.DatosLaborales.Update(laborales);
+            await bd.SaveChangesAsync();
+            bd.DatosEclesiasticos.Update(eclesiasticos);
+            await bd.SaveChangesAsync();
+            bd.DatosAcademicos.Update(academicos);
+            await bd.SaveChangesAsync();
+            bd.Integrantes.Update(integrantes);
+            await bd.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         [Route("Delete")]
         public IActionResult Delete(int? id)

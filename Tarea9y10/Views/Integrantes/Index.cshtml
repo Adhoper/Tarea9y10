@@ -65,7 +65,7 @@
                 </td>
                 <td style='text-align: center;font-family: Arial;'>
                     <div class="btn-group btn-group-sm">
-                        @Html.ActionLink("Modificar", "Edit", new { id = datos.IntegranteId }, new { @class = "btn btn-warning" })
+                        <a asp-action="Update" asp-route-id="@datos.IntegranteId" class="btn btn-warning">Actualizar</a>
                         @Html.ActionLink("Detalles", "Details", new { id = datos.IntegranteId }, new { @class = "btn btn-success" })
                         <a asp-action="Delete" asp-route-id="@datos.IntegranteId" onclick="return confirm('Estas seguro que quieres borrar esto?')" class = "btn btn-danger" >Eliminar</a>
                     </div>
